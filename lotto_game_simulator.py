@@ -21,6 +21,8 @@ def losowanie_lotto():
     liczba_wylosowanych_liczb = 0
     while liczba_wylosowanych_liczb < 6:
         wylosowana_liczba = randint(1, 50)
+        if wylosowana_liczba in wylosowane:
+            wylosowana_liczba = randint(1, 50)
         wylosowane.append(wylosowana_liczba)
         liczba_wylosowanych_liczb += 1
     return set(wylosowane)
@@ -34,3 +36,4 @@ def sprawdz():
 
 
 print(sprawdz())
+print(losowanie_lotto())
