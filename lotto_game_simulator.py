@@ -36,4 +36,3 @@ def sprawdz():
 
 
 print(sprawdz())
-print(losowanie_lotto())
