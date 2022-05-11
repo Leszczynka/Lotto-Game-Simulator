@@ -1,38 +1,31 @@
 from random import randint
 
 
-def take_numbers():
-    return int(input("Podaj liczbę: "))
+class Lotto:
+    def __init__(self, user_numbers: list):
+        self.winning_numbers = []
+        self.user_numbers = user_numbers
 
+    def draw_numbers(self):
+        while len(self.winning_numbers) < 6:
+            number = randint(1, 49)
+            if number not in self.winning_numbers:
+                self.winning_numbers.append(number)
 
-def drukuj_kupon():
-    kupon = []
-    while len(kupon) < 6:
-        typowany_numer = take_numbers()
-        if typowany_numer not in kupon:
-            kupon.append(typowany_numer)
+    def check_numbers(self):
+        if len(set(self.winning_numbers) & set(self.user_numbers)) == len(self.winning_numbers):
+            print("YOU WON!!!")
         else:
-            print("Już podałeś tą liczbę. Wytypuj inną.")
-    return set(kupon)
+            print("Not this time")
+
+    def __str__(self):
+        return str(f"Your numbers: {self.user_numbers}\nLucky numbers: {self.winning_numbers}")
 
 
-def losowanie_lotto():
-    wylosowane = []
-    liczba_wylosowanych_liczb = 0
-    while liczba_wylosowanych_liczb < 6:
-        wylosowana_liczba = randint(1, 50)
-        if wylosowana_liczba in wylosowane:
-            wylosowana_liczba = randint(1, 50)
-        wylosowane.append(wylosowana_liczba)
-        liczba_wylosowanych_liczb += 1
-    return set(wylosowane)
+if __name__ == "__main__":
+    my_numbers = [11, 22, 4, 6, 2, 14]
 
-
-def sprawdz():
-    if len(drukuj_kupon() & losowanie_lotto()) == 6:
-        return "Trafiłeś 6 w lotto!"
-    else:
-        return "Nie tym razem..."
-
-
-print(sprawdz())
+    l1 = Lotto(my_numbers)
+    l1.draw_numbers()
+    l1.check_numbers()
+    print(l1)
