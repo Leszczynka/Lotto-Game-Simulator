@@ -18,9 +18,10 @@ class Lotto:
     def take_numbers_from_user(self):
         while len(self.user_numbers) < 6:
             number = int(input("Type a number from 1 to 49: "))
-            if number not in self.user_numbers:
+            if number == 0 or number > 49:
+                print("You type a wrong number.")
+            if number not in self.user_numbers and 1 <= number <= 49:
                 self.user_numbers.append(number)
-        print(f"Your numbers are: {self.user_numbers}")
 
     def draw_numbers(self):
         while len(self.winning_numbers) < 6:
@@ -37,7 +38,7 @@ class Lotto:
             if number in self.winning_numbers:
                 self.user_lucky_numbers += 1
         if self.user_lucky_numbers == 0:
-            print("No match this time")
+            print("No match.")
         elif self.user_lucky_numbers == 6:
             print("Congratulations. The main award is yours!")
         else:
@@ -48,7 +49,7 @@ class Lotto:
         if self.user_lucky_numbers >= 3:
             print(f"Win rate is: {self.win_rate[self.user_lucky_numbers]}.")
         else:
-            print("No award this time.")
+            print("No award.")
 
     def __str__(self):
         return str(f"Your numbers: {self.user_numbers}\nLucky numbers: {self.winning_numbers}")
