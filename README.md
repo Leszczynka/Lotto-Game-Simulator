@@ -25,4 +25,4 @@ User receives information about the number of matching numbers and about the win
 Python version 3.10.2
 
 ### Setup
-You can run this project by saving the file on your device and run it from the command line, or copying the code into your IDE and run it, or compile it into an executable (.exe) file and run it.
+You can run this project by downloading the file lotto_simulator.py and run it from the command line.
